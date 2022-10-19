@@ -5,18 +5,18 @@ const score = 0;
 const items = 0;
 
     // Define the player object here
-const player = {
-    name: name,
-    score: score,
-    items: items,
+let player = {
+    name,
+    score,
+    items,
     getCurrentScore() {
         return this.score;
     },
     addPoints(points) {
-        return this.score += points;
+        this.score += points;
     },
     deductPoints(points) {
-        return this.score -= points;
+        this.score -= points;
     }
 }
 
