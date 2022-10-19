@@ -10,13 +10,13 @@ const player = {
     score: score,
     items: items,
     getCurrentScore() {
-        return score;
+        return this.score;
     },
     addPoints(points) {
-        return score += points;
+        return this.score += points;
     },
     deductPoints(points) {
-        return score -= points;
+        return this.score -= points;
     }
 }
 
@@ -37,7 +37,7 @@ const dateDiff = (date1, date2) => {
 // Here, use Object.defineProperty to create property - daysToExpire
 
 Object.defineProperty(Product.prototype, "daysToExpire", {
-    get: function () { dateDiff(Product.prototype.expiryDate, new Date()) }
+    get: function () { return dateDiff(this.expiryDate, new Date()); }
 });
 
 // Add method getDetails to Product here
@@ -57,10 +57,10 @@ MagicProduct.prototype = Object.create(Product.prototype);
 class Rating {
 
     constructor() {
-        rate = "";
+        this.rate = "";
     }
 
-    setRate(value) {
+    set rating(value) {
         if (value > 1 && value <= 4) {
             this.rate = "OK";
         }
@@ -70,7 +70,10 @@ class Rating {
         else if (value > 7) {
             this.rate = "EXCEPTIONAL";
         }
-        this.rate = "BAD";
+        else {
+            this.rate = "BAD";
+        }
+
     }
 }
 
